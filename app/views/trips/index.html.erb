@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Urban Nomad</title>
+	</head>
+
+	<body>
+		<div class = 'container'>
+			<div class = 'row'>
+				<div class = 'col-md-1'></div>
+				<div class = 'col-md-10'>
+					<h1><strong>Welcome to Urban Nomad</strong></h1> 
+					<h2><strong>Your Social Travel Advisor</strong></h2>
+					<h3 class = 'lead'>The social trip planner for the locally minded explorer.</h3>
+				</div>
+				<div class = 'col-md-1'></div>
+			</div>
+
+			<div class = 'row'>
+				<div class = 'col-md-2'></div>	
+				<div class = 'col-md-8'>
+					<h1><strong>Part I - City Selection<strong></h1>
+					<h3 class = 'lead'>Choose a destination city from the dropdown below or search your previously-created trips to edit.</h3> 
+					<h3 class = 'lead'>For our initial launch, we've decided to implement 
+						Urban Nomad in 6 select cities across the United States. But as we grow, we will roll out additional cities for you to visit!</h3>
+					<h3 class = 'lead'>Check back soon for new destinations...</h3></div>
+				<div class = 'col-md-2'></div>
+			</div>
+			
+			<div class = 'container-fluid'>
+				<div class = 'row'>
+					<p><%= render 'form' %></p>
+				</div>
+			</div>
+			
+			<div class = 'container-fluid'>
+				<div class = 'row'>
+					<p>OR</p>
+					<p><%= link_to 'View All Your Trips', user_trips_path, class: "btn btn-success btn-sm" %></p>
+				</div>
+			</div>
+		</div>
+		
+		<div class='container-fluid'>
+			<div class = 'row'>
+					<div class = 'col-md-2'></div>	
+					<div class = 'col-md-8'>
+						<h1><strong>City Search<strong></h1>
+						<h3 class = 'lead'>Click on your city of choice below to see trips other users have created for more ideas.</h3>
+					<div class = 'col-md-2'></div>
+				</div>
+			</div>
+
+
+		<div class='container-fluid'>
+			<div class = 'row-fluid'>
+				<div class = 'col-md-12'>
+					<%= link_to image_tag('NYC.jpg', size: "340x236"), all_trips_path(city: "New York")%>
+					<%= link_to image_tag('LA.jpg', size: "340x236"), all_trips_path(city: "Los Angeles")%>
+					<%= link_to image_tag('SF.jpg', size: "340x236"), all_trips_path(city: "San Francisco")%><br />
+				</div>
+			</div>
+
+			<div class = 'row-fluid'>
+				<div class = 'col-md-12'>
+					<%= link_to image_tag('Chicago.jpg', size: "340x236"), all_trips_path(city: "Chicago")%>
+					<%= link_to image_tag('DC.jpg', size: "340x236"), all_trips_path(city: "Washington DC")%>
+					<%= link_to image_tag('Boston.jpg', size:"340x236"), all_trips_path(city: "Boston")%><br />
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<footer>
+		<p> - URBAN NOMAD 2015 - </p>
+	</footer>
+</html>

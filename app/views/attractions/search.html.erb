@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Urban Nomad - Attraction Search</title>
+	</head>
+
+	<body>
+		<div class='container-fluid'>
+			<div class='row-fluid'>
+				<div class='col-md-2'></div>
+				<div class='col-md-8'>
+					<h1><strong>Part II - <%= @term %> in <%= @city %></strong></h1>
+					<h3 class = 'lead'>Below you will find the name, Yelp link and category of the top 20 attractions in your search. Click the 'Add Attraction' button to add attraction to your trip. Click the Yelp link for more information. Click the back button to return to the previous page.</h3>
+				</div>
+				<div class='col-md-2'></div>
+			</div>
+		</div>
+				<% count = 1 %>
+					<% @output.each do |attraction| %>
+						<div class = 'container-fluid'>
+							<div class = 'row-fluid'>
+								<% if count == 1 %>
+									<div class = 'col-md-2'></div>
+									<div class ='col-md-2'>
+										<h1><strong>Attraction</strong></h1>
+										<p><%= count %>. <%= attraction["name"] %></p>
+									</div>
+
+									<div class = 'col-md-2'>
+										<h1><strong>Yelp URL</strong></h1>
+										<p><%= link_to attraction["url"], attraction["url"] %></p>
+									</div>
+
+									<div class = 'col-md-2'>
+										<h1><strong>Category</strong></h1>
+										<p><%= attraction["categories"].first.first %></p>
+									</div>
+
+									<div class = 'col-md-2'>
+										<h1><strong>Add?</strong></h1>
+										<p><%= link_to 'Add Attraction', new_attraction_path(name: attraction["name"], trip_id: @trip_id, description: attraction["categories"].first.first, url: attraction["url"]), class: "btn btn-success btn-sm" %></p>
+									</div>
+									<div class = 'col-md-2'></div>
+								<% else %>
+									<div class = 'col-md-2'></div>
+
+									<div class = 'col-md-2'>
+										<p><%= count %>. <%= attraction["name"] %></p>
+									</div>
+
+									<div class = 'col-md-2'>
+										<p><%= link_to attraction["url"], attraction["url"] %></p>
+									</div>
+
+									<div class = 'col-md-2'>
+										<p><%= attraction["categories"].first.first %></p>
+									</div>
+
+									<div class = 'col-md-2'>
+										<p><%= link_to 'Add Attraction', new_attraction_path(name: attraction["name"], trip_id: @trip_id, description: attraction["categories"].first.first, url: attraction["url"]), class: "btn btn-success btn-sm" %></p>
+									</div>
+
+									<div class = 'col-md-2'></div>
+								<% end %>
+							</div>
+						</div>
+						<% count += 1 %>
+					<% end %>
+				<p><%= link_to 'Back', trip_path(@trip_id), class: "btn btn-danger btn-sm" %></p>
+	</body>
+</html>

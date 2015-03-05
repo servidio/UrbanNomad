@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Urban Nomad - Attraction Confirmation</title>
+	</head>
+	
+	<body>
+		<div class='container-fluid'>
+			<div class='row-fluid'>
+				<div class='col-md-3'></div>
+				<div class='col-md-6'>
+					<h1>Are you sure you want to add <%= @attraction.name %> to your trip?</h1>
+					<h3><strong><%= link_to @attraction.name, @attraction.url %></strong></h3>
+					<p><%= form_for Attraction.new do |f|%>
+						<%= f.hidden_field :name, value: @attraction.name %>
+						<%= f.hidden_field :description, value: @attraction.description %>
+						<%= f.hidden_field :url, value: @attraction.url %>
+						<%= f.hidden_field :trip_id, value: @attraction.trip_id %>
+					  	<p><%= f.submit "Confirm?", class: "btn btn-success btn-sm" %></p>	
+						<%= link_to "Back", trip_path(@attraction.trip_id), class: "btn btn-danger btn-sm" %>
+					<% end %></p>
+				</div>
+
+				<div class='col-md-3'></div>
+		
+	</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Urban Nomad - All Trips</title>
+	</head>
+
+	<body>
+		<div class='container-fluid'>
+			<div class='row-fluid'>
+				<div class='col-md-2'></div>
+				<div class='col-md-8'>
+					<h1><strong>All Trips</strong></h1>
+					<h3 class='lead'>Please click on the 'More Info' link below if you'd like more information about the trip.</h3>
+				</div>
+				<div class='col-md-2'></div>
+			</div>
+		</div>
+
+
+		
+		<% count = 1 %>
+
+		<% @trips.each do |trip| %>
+			<div class='container-fluid'>
+				<div class='row-fluid'>
+					<% if count == 1 %>
+						<div class='col-md-2'></div>
+
+						<div class='col-md-2'>
+							<h1><strong>City</strong></h1>
+							<p><%= count %>. <%= trip.city.name %></p>
+						</div>
+
+						<div class='col-md-2'>
+							<h1><strong>User</strong></h1>
+							<p><%= trip.user.email %></p>
+						</div>
+
+						<div class='col-md-2'>
+							<h1><strong>Link</strong></h1>
+							<p><%= link_to 'More Info', trip, class: 'btn btn-success btn-sm' %></p>
+						</div>
+
+						<div class='col-md-2'>
+							<h1><strong>Delete?</strong></h1>
+							<% if trip.user.email == @user.email %>
+								<p><%= link_to 'Delete Trip', trip_path(id: trip), method: :delete, class: 'btn btn-danger btn-sm' %></p>
+							<% else %>
+								<p></p>
+							<% end %>
+						</div>
+
+						<div class='col-md-2'></div>
+
+					<% else %>
+						<div class='col-md-2'></div>
+
+						<div class='col-md-2', text-align='center'>
+							<p><%= count %>. <%= trip.city.name %></p>
+						</div>
+
+						<div class='col-md-2'>
+							<p><%= trip.user.email %></p>
+						</div>
+
+						<div class='col-md-2', text-align='center'>
+							<p><%= link_to 'More Info', trip, class: 'btn btn-success btn-sm' %></p>
+						</div>
+
+						<div class='col-md-2'>
+							<% if trip.user.email == @user.email %>
+								<p><%= link_to 'Delete Trip', trip_path(id: trip), method: :delete, class: 'btn btn-danger btn-sm' %></p>
+							<% else %>
+								<p></p>
+							<% end %>
+						</div>
+
+						<div class='col-md-3'></div><br />
+					<% end %>
+				</div>
+			</div>
+			<% count += 1 %>
+		<% end %>
+		<br /><p><%= link_to 'Home', root_path, class: "btn btn-success btn-sm" %></p>
+
+	</body>
+</html>

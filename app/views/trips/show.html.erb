@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Your Trip to <%= @trip.city.name %></title>
+	<head>
+
+	<body>
+		<h1><strong>Here's your trip to <%= @trip.city.name %></strong></h1>
+		<div class='container-fluid'>
+			<div class='row-fluid'>
+				<div class='col-md-2'></div>
+
+				<div class='col-md-4'>
+					<p><%= image_tag(@trip.city.image, size: "340x236") %></p>
+				</div>
+
+				<div class='col-md-4'>
+					<br /><p class='lead', style='font-size: 100%', align='left'><%= @trip.city.info %></p>
+				</div>
+				<div class='col-md-2'></div>
+			</div>
+		</div>
+
+		<h3>Add and Search Attractions Below</h3>
+		<%= form_tag attraction_search_path, method: 'GET' do %>
+			<p><%= text_field_tag :term, params[:term] %></p>
+			<p><%= hidden_field_tag :trip_id, @trip.id %></p>
+			<div class="form-group">
+		  		<%= submit_tag "Search Attractions", class: "btn btn-success btn-sm" %>
+			</div>
+		<% end %>
+		
+		<% count = 1 %>
+		<% if @attractions.nil? != true %>
+			<% @attractions.each do |attraction| %>
+				<div class = 'container-fluid'>
+					<div class='row-fluid'>
+						<% if count == 1 %>
+							<div class = 'col-md-2'></div>
+							<div class ='col-md-2 text-center'>
+								<h1><strong>Attraction</strong></h1>
+								<p><strong><%= attraction.name %></strong></p>
+							</div>
+
+							<div class = 'col-md-2 text-center'>
+								<h1><strong>Yelp URL</strong></h1>
+								<p><%= link_to attraction.url, attraction.url %></p>
+							</div>
+
+							<div class = 'col-md-2 text-center'>
+								<h1><strong>Category</strong></h1>
+								<p><%= attraction.description %></p>
+							</div>
+
+							<div class = 'col-md-2 text-center'>
+								<h1><strong>Delete?</strong></h1>
+								<% if @trip.user == @user %>
+									<p><%= link_to 'Delete Attraction', attraction_path(id: attraction, trip_id: @trip.id), method: :delete, class: "btn btn-danger btn-sm" %></p>
+								<% else %>
+									<p>N/A</p>
+								<% end <%>
+							</div>
+
+							<div class = 'col-md-2'></div>
+						<% else %>
+							<div class='col-md-2'></div>
+
+							<div class='col-md-2'>
+								<p><strong><%= attraction.name %></strong></p>
+							</div>
+							
+							<div class='col-md-2'>
+								<p><%= link_to attraction.url, attraction.url %></p>
+							</div>
+
+							<div class='col-md-2'>
+								<p><%= attraction.description %></p>
+							</div>
+
+							<div class='col-md-2'>
+								<% if @trip.user == @user %>
+									<p><%= link_to 'Delete Attraction', attraction_path(id: attraction, trip_id: @trip.id), method: :delete, class: "btn btn-danger btn-sm" %></p>
+								<% else %>
+									<p>N/A</p>
+								<% end <%>
+							</div>
+
+							<div class='col-md-2'></div>
+						<% end %>
+					</div>
+				</div>
+				<% count += 1 %>
+			<% end %><br />
+		<% end %>
+
+		<p><%= link_to 'Home', root_path, class: "btn btn-danger btn-sm" %></p>
+
+		
+	</body>
+</html>
