@@ -32,6 +32,8 @@
 		<% else %>
 			<p></p>
 		<% end %>
+
+		
 		
 		<% count = 1 %>
 		<% if @attractions.nil? != true %>
@@ -94,6 +96,58 @@
 				</div>
 				<% count += 1 %>
 			<% end %><br />
+		<% end %>
+		
+		<%= form_for Comment.new, comments_path => {method: 'POST'} do |f| %>
+			<p><%= f.text_area :body %></p>
+			<p><%= f.hidden_field :trip_id, :value => @trip.id %></p>
+			<div class="form-group">
+		  		<%= f.submit "Leave Comment", class: "btn btn-success btn-sm" %>
+			</div>
+		<% end %>
+		
+		<% comment_count = 1 %>
+		<% if @comments.nil? != true %>
+		<% @comments.each do |comment| %>
+			<div class = 'container-fluid'>
+					<div class='row-fluid'>
+						<% if comment_count == 1 %>
+							<div class = 'col-md-2'></div>
+							<div class ='col-md-4 text-center'>
+								<h1><strong>Trip Comments</strong></h1>
+								<p><strong><%= comment.body %></strong></p>
+								<p><i><%= comment.user.email %></i></p>
+							</div>
+
+							<div class = 'col-md-4 text-center'>
+								<h1><strong>Delete?</strong></h1>
+								<% if @trip.user == @user || @user.email == 'christopher.servidio@gmail.com'%>
+									<p><%= link_to 'Delete Comment', comment_path(id: comment, trip_id: @trip.id), method: :delete, class: "btn btn-danger btn-sm" %></p>
+								<% else %>
+									<p>N/A</p>
+								<% end <%>
+							</div>
+							<div class = 'col-md-2'></div>
+						<% else %>
+							<div class = 'col-md-2'></div>
+							<div class ='col-md-4 text-center'>
+								<p><strong><%= comment.body %></strong></p>
+								<p><i><%= comment.user.email %></i></p>
+							</div>
+
+							<div class = 'col-md-4 text-center'>
+								<% if @trip.user == @user%>
+									<p><%= link_to 'Delete Comment', comment_path(id: comment, trip_id: @trip.id), method: :delete, class: "btn btn-danger btn-sm" %></p>
+								<% else %>
+									<p>N/A</p>
+								<% end <%>
+							</div>
+							<div class = 'col-md-2'></div>
+						<% end %>
+					</div>
+				</div>
+				<% comment_count += 1 %>
+			<% end %>
 		<% end %>
 
 		<p><%= link_to 'Home', root_path, class: "btn btn-danger btn-sm" %></p>

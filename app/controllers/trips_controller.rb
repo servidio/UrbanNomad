@@ -22,6 +22,7 @@ class TripsController < ApplicationController
 		@trip_id = params[:id]
 		@user = current_user
 		@attractions = Attraction.where(trip_id: @trip_id)
+		@comments = Comment.where(trip_id: @trip_id)
 	end
 
 	def usertrips
