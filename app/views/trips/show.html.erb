@@ -20,14 +20,17 @@
 				<div class='col-md-2'></div>
 			</div>
 		</div>
-
-		<h3>Add and Search Attractions Below</h3>
-		<%= form_tag attraction_search_path, method: 'GET' do %>
-			<p><%= text_field_tag :term, params[:term] %></p>
-			<p><%= hidden_field_tag :trip_id, @trip.id %></p>
-			<div class="form-group">
-		  		<%= submit_tag "Search Attractions", class: "btn btn-success btn-sm" %>
-			</div>
+		<% if @trip.user == @user %>
+			<h3>Add and Search Attractions Below</h3>
+			<%= form_tag attraction_search_path, method: 'GET' do %>
+				<p><%= text_field_tag :term, params[:term] %></p>
+				<p><%= hidden_field_tag :trip_id, @trip.id %></p>
+				<div class="form-group">
+			  		<%= submit_tag "Search Attractions", class: "btn btn-success btn-sm" %>
+				</div>
+			<% end %>
+		<% else %>
+			<p></p>
 		<% end %>
 		
 		<% count = 1 %>
