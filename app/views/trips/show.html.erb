@@ -5,7 +5,8 @@
 	<head>
 
 	<body>
-		<h1><strong>Here's your trip to <%= @trip.city.name %></strong></h1>
+		<h1><strong>Trip to <%= @trip.city.name %></strong></h1>
+		<h4><i>Created by <%= @trip.user.email %></i></h4>
 		<div class='container-fluid'>
 			<div class='row-fluid'>
 				<div class='col-md-2'></div>
@@ -20,21 +21,12 @@
 				<div class='col-md-2'></div>
 			</div>
 		</div>
-		<% if @trip.user == @user %>
-			<h3>Add and Search Attractions Below</h3>
-			<%= form_tag attraction_search_path, method: 'GET' do %>
-				<p><%= text_field_tag :term, params[:term] %></p>
-				<p><%= hidden_field_tag :trip_id, @trip.id %></p>
-				<div class="form-group">
-			  		<%= submit_tag "Search Attractions", class: "btn btn-success btn-sm" %>
-				</div>
-			<% end %>
-		<% else %>
-			<p></p>
-		<% end %>
 
 		
+
 		
+		<h1><strong>Trip Attractions</strong></h1>
+		<p class='lead'>Below you'll find all the attractions associated with this trip. Click the Yelp link if you'd like more info.</p>
 		<% count = 1 %>
 		<% if @attractions.nil? != true %>
 			<% @attractions.each do |attraction| %>
@@ -43,13 +35,13 @@
 						<% if count == 1 %>
 							<div class = 'col-md-2'></div>
 							<div class ='col-md-2 text-center'>
-								<h1><strong>Attraction</strong></h1>
+								<h1><strong>Name</strong></h1>
 								<p><strong><%= attraction.name %></strong></p>
 							</div>
 
 							<div class = 'col-md-2 text-center'>
-								<h1><strong>Yelp URL</strong></h1>
-								<p><%= link_to attraction.url, attraction.url %></p>
+								<h1><strong>Yelp</strong></h1>
+								<p><%= link_to 'More Info', attraction.url, :target => "_blank", class: "btn btn-info btn-sm" %></p>
 							</div>
 
 							<div class = 'col-md-2 text-center'>
@@ -67,7 +59,7 @@
 							</div>
 
 							<div class = 'col-md-2'></div>
-						<% else %>
+						<% else %>x
 							<div class='col-md-2'></div>
 
 							<div class='col-md-2'>
@@ -75,7 +67,7 @@
 							</div>
 							
 							<div class='col-md-2'>
-								<p><%= link_to attraction.url, attraction.url %></p>
+								<p><%= link_to 'More Info', attraction.url, :target => "_blank", class: "btn btn-info btn-sm" %></p>
 							</div>
 
 							<div class='col-md-2'>
@@ -97,15 +89,26 @@
 				<% count += 1 %>
 			<% end %><br />
 		<% end %>
+
+		<% if @trip.user == @user %>
+			<h1><strong>Search New Attractions</strong></h1>
+			<p class='lead'>Enter an attraction, restaurant, bar, etc. you would like to search for in the box below.</p>
+			<%= form_tag attraction_search_path, method: 'GET' do %>
+				<p><%= text_field_tag :term, params[:term] %></p>
+				<p><%= hidden_field_tag :trip_id, @trip.id %></p>
+				<div class="form-group">
+			  		<%= submit_tag "Search Attractions", class: "btn btn-success btn-sm" %>
+				</div>
+			<% end %>
+		<% else %>
+			<p></p>
+		<% end %><br />
 		
-		<%= form_for Comment.new, comments_path => {method: 'POST'} do |f| %>
-			<p><%= f.text_area :body %></p>
-			<p><%= f.hidden_field :trip_id, :value => @trip.id %></p>
-			<div class="form-group">
-		  		<%= f.submit "Leave Comment", class: "btn btn-success btn-sm" %>
-			</div>
-		<% end %>
+
 		
+		
+		<h1><strong>User Comments</strong></h1>
+		<p class='lead'>Type  comments you would like to leave for this trip in the box below.</p>
 		<% comment_count = 1 %>
 		<% if @comments.nil? != true %>
 		<% @comments.each do |comment| %>
@@ -114,13 +117,11 @@
 						<% if comment_count == 1 %>
 							<div class = 'col-md-2'></div>
 							<div class ='col-md-4 text-center'>
-								<h1><strong>Trip Comments</strong></h1>
 								<p><strong><%= comment.body %></strong></p>
-								<p><i><%= comment.user.email %></i></p>
+								<p>  - <i><%= comment.user.email %></i></p>
 							</div>
 
 							<div class = 'col-md-4 text-center'>
-								<h1><strong>Delete?</strong></h1>
 								<% if @trip.user == @user || @user.email == 'christopher.servidio@gmail.com' || comment.user == @user %>
 									<p><%= link_to 'Delete Comment', comment_path(id: comment, trip_id: @trip.id), method: :delete, class: "btn btn-danger btn-sm" %></p>
 								<% else %>
@@ -132,7 +133,7 @@
 							<div class = 'col-md-2'></div>
 							<div class ='col-md-4 text-center'>
 								<p><strong><%= comment.body %></strong></p>
-								<p><i><%= comment.user.email %></i></p>
+								<p>  - <i><%= comment.user.email %></i></p>
 							</div>
 
 							<div class = 'col-md-4 text-center'>
@@ -150,8 +151,21 @@
 			<% end %>
 		<% end %>
 
-		<p><%= link_to 'Home', root_path, class: "btn btn-danger btn-sm" %></p>
+		<%= form_for Comment.new, comments_path => {method: 'POST'} do |f| %>
+			<p><%= f.text_area :body %></p>
+			<p><%= f.hidden_field :trip_id, :value => @trip.id %></p>
+			<div class="form-group">
+		  		<%= f.submit "Leave Comment", class: "btn btn-success btn-sm" %>
+			</div>
+		<% end %><br />
+		
+
+		<p><%= link_to 'Home', root_path, class: "btn btn-danger btn-md" %></p>
 
 		
 	</body>
+
+	<footer>
+		<br /><p> - URBAN NOMAD 2015 - Powered by Yelp </p>
+	</footer>
 </html>

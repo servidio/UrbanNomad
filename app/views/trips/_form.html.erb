@@ -1,5 +1,5 @@
 <%= form_for @trip do |f| %>
-	<h4><%= f.label :city %></h4>
+	<h3><%= f.label :city %></h3>
 	<p><%= f.select :city_id, City.all.collect {|city| [city.name, city.id]} %></p>
-  	<%= f.submit "Create A New Trip", class: "btn btn-success btn-sm" %>
+  	<%= f.submit "Create A New Trip", class: "btn btn-success btn-md" %>
 <% end %>

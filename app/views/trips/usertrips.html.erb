@@ -10,7 +10,7 @@
 				<div class='col-md-2'></div>
 				<div class='col-md-8'>
 					<h1><strong><%= @current_user.email %>'s Trips</strong></h1>
-					<h3 class='lead'>Please click on the 'More Info' link below if you'd like more information about your trip plans.</h3>
+					<h3 class='lead'>Please click on the 'More Info' link below if you'd like more information about your trip plans. Click the delete button if you'd like to delete your trip and remove it from the search.</h3>
 				</div>
 				<div class='col-md-2'></div>
 			</div>
@@ -73,7 +73,11 @@
 			</div>
 			<% count += 1 %>
 		<% end %>
-		<br /><p><%= link_to 'Home', root_path, class: "btn btn-success btn-sm" %></p>
+		<br /><p><%= link_to 'Home', root_path, class: "btn btn-danger btn-md" %></p>
 
 	</body>
+
+	<footer>
+		<br /><p> - URBAN NOMAD 2015 - Powered by Yelp </p>
+	</footer>
 </html>

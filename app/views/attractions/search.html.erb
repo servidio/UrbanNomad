@@ -9,7 +9,7 @@
 			<div class='row-fluid'>
 				<div class='col-md-2'></div>
 				<div class='col-md-8'>
-					<h1><strong>Part II - <%= @term %> in <%= @city %></strong></h1>
+					<h1><strong><%= @term %> in <%= @city %></strong></h1>
 					<h3 class = 'lead'>Below you will find the name, Yelp link and category of the top 20 attractions in your search. Click the 'Add Attraction' button to add attraction to your trip. Click the Yelp link for more information. Click the back button to return to the previous page.</h3>
 				</div>
 				<div class='col-md-2'></div>
@@ -28,7 +28,7 @@
 
 									<div class = 'col-md-2'>
 										<h1><strong>Yelp URL</strong></h1>
-										<p><%= link_to attraction["url"], attraction["url"] %></p>
+										<p><%= link_to 'More Info', attraction["url"], :target => "_blank", class: 'btn btn-info btn-sm' %></p>
 									</div>
 
 									<div class = 'col-md-2'>
@@ -49,7 +49,7 @@
 									</div>
 
 									<div class = 'col-md-2'>
-										<p><%= link_to attraction["url"], attraction["url"] %></p>
+										<p><%= link_to 'More Info', attraction["url"], :target => "_blank", class: 'btn btn-info btn-sm' %></p>
 									</div>
 
 									<div class = 'col-md-2'>
@@ -66,6 +66,10 @@
 						</div>
 						<% count += 1 %>
 					<% end %>
-				<p><%= link_to 'Back', trip_path(@trip_id), class: "btn btn-danger btn-sm" %></p>
+				<br /><p><%= link_to 'Back', trip_path(@trip_id), class: "btn btn-danger btn-md" %></p>
 	</body>
+
+	<footer>
+		<br /><p> - URBAN NOMAD 2015 - Powered by Yelp </p>
+	</footer>
 </html>

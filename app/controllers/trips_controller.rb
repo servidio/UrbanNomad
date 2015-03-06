@@ -37,4 +37,10 @@ class TripsController < ApplicationController
 		@trips = Trip.where(city_id: @city)
 	end
 
+	def destroy
+	    @trip = Trip.find(params[:id])
+	    @trip.destroy
+	    redirect_to root_path
+  	end 
+
 end
