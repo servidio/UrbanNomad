@@ -10,8 +10,8 @@
 				<div class = 'col-md-1'></div>
 				<div class = 'col-md-10'>
 					<h1><strong>Welcome to Urban Nomad</strong></h1> 	
-					<h3>The social trip planner for the locally minded explorer.</h3> 
-					<h3 class = 'lead'>Here at Urban Nomad, we hope to fill you with ideas for your ideal trip to the following six select cities across the United States. We've limited your choice to make it easier on you and on us as well. As we continue to grow, we hope to roll out additional cities for you to visit, so please check back soon for additional destinations!</h3>
+					<h3><i>The social trip planner for the locally minded explorer.</i></h3> 
+					<h3 class = 'lead'>Here at Urban Nomad, we hope to fill your imagination with ideas for your an upcoming trip to the following six cities across the United States. We've decided to limit your choice to make not only make it easier on us, but also to make it easier on you. As we continue to grow, we hope to roll out additional cities for you to visit, so please check back soon for new destinations!</h3>
 				</div>
 				<div class = 'col-md-1'></div>
 			</div>
@@ -20,27 +20,19 @@
 				<div class = 'col-md-2'></div>	
 				<div class = 'col-md-8'>
 					<h1><strong>Create a New Trip<strong></h1>
-					<h3 class = 'lead'>Choose a destination city from the dropdown below or search your previously-created trips to edit.</h3> 
+					<h3 class = 'lead'>Choose a destination city from the dropdown below. Careful - once you hit the 'Create New Trip' button this trip will be saved under your account.</h3>
+					<%= render 'form' %> 
 				</div>
 					
 				<div class = 'col-md-2'></div>
 			</div>
-			
-			<div class = 'container-fluid'>
-				<div class = 'row'>
-					<p><%= render 'form' %></p>
-				</div>
-			</div>
-			
-		</div>
 		
 		<div class='container-fluid'>
 			<div class = 'row'>
 					<div class = 'col-md-2'></div>	
 					<div class = 'col-md-8'>
 						<h1><strong>Search Existing Trips<strong></h1>
-						<h3 class = 'lead'>Click on your city of choice below to see trips other users have created for more ideas.</h3>
-						<p>OR</p>
+						<h3 class = 'lead'>Click on your city of choice below to see trips other users have created for more ideas. Or, click the link below to view all trips that you've created. Here you'll be able to edit and/or delete any trips you've created.</h3>
 						<p><%= link_to 'View All Your Trips', user_trips_path, class: "btn btn-success btn-md" %></p>
 					<div class = 'col-md-2'></div>
 				</div>
