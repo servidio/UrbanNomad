@@ -11,21 +11,12 @@
 				<div class = 'col-md-10'>
 					<h1><strong>Welcome to Urban Nomad</strong></h1> 	
 					<h3><i>The social trip planner for the locally minded explorer.</i></h3> 
-					<h3 class = 'lead'>Here at Urban Nomad, we hope to fill your imagination with ideas for your an upcoming trip to the following six cities across the United States. We've decided to limit your choice to make not only make it easier on us, but also to make it easier on you. As we continue to grow, we hope to roll out additional cities for you to visit, so please check back soon for new destinations!</h3>
+					<h3 class = 'lead'>Here at Urban Nomad, we hope to fill your imagination with ideas for your an upcoming trip to the following six cities across the United States and three select cities in Canada. We've decided to limit your choice to not only make it easier on us, but also to make it easier on you. As we continue to grow, we hope to roll out additional cities for you to visit, so please check back soon for new destinations!</h3>
 				</div>
 				<div class = 'col-md-1'></div>
 			</div>
 
-			<div class = 'row'>
-				<div class = 'col-md-2'></div>	
-				<div class = 'col-md-8'>
-					<h1><strong>Create a New Trip<strong></h1>
-					<h3 class = 'lead'>Choose a destination city from the dropdown below. Careful - once you hit the 'Create New Trip' button this trip will be saved under your account.</h3>
-					<%= render 'form' %> 
-				</div>
-					
-				<div class = 'col-md-2'></div>
-			</div>
+			
 		
 		<div class='container-fluid'>
 			<div class = 'row'>
@@ -42,21 +33,41 @@
 		<div class='container-fluid'>
 			<div class = 'row-fluid'>
 				<div class = 'col-md-12'>
-					<%= link_to image_tag('NYC.jpg', size: "340x236"), all_trips_path(city: "New York")%>
-					<%= link_to image_tag('LA.jpg', size: "340x236"), all_trips_path(city: "Los Angeles")%>
-					<%= link_to image_tag('SF.jpg', size: "340x236"), all_trips_path(city: "San Francisco")%><br />
+					<%= link_to image_tag('NYC.jpg', size: "338x169"), all_trips_path(city: "New York")%>
+					<%= link_to image_tag('DC.jpg', size: "338x169"), all_trips_path(city: "Washington DC")%>
+					<%= link_to image_tag('SF.jpg', size: "338x169"), all_trips_path(city: "San Francisco")%><br />
 				</div>
 			</div>
 
 			<div class = 'row-fluid'>
 				<div class = 'col-md-12'>
-					<%= link_to image_tag('Chicago.jpg', size: "340x236"), all_trips_path(city: "Chicago")%>
-					<%= link_to image_tag('DC.jpg', size: "340x236"), all_trips_path(city: "Washington DC")%>
-					<%= link_to image_tag('Boston.jpg', size:"340x236"), all_trips_path(city: "Boston")%><br />
+					<%= link_to image_tag('Chicago.jpg', size: "338x169"), all_trips_path(city: "Chicago")%>
+					<%= link_to image_tag('LA.jpg', size: "338x169"), all_trips_path(city: "Los Angeles")%>
+
+					<%= link_to image_tag('Boston.jpg', size:"338x169"), all_trips_path(city: "Boston")%><br />
+				</div>
+			</div>
+
+			<div class = 'row-fluid'>
+				<div class = 'col-md-12'>
+					<%= link_to image_tag('Ottawa.jpg', size: "338x169"), all_trips_path(city: "Ottawa")%>
+					<%= link_to image_tag('Montreal.jpg', size: "338x169"), all_trips_path(city: "Montreal")%>
+					<%= link_to image_tag('Toronto.jpg', size: "338x169"), all_trips_path(city: "Toronto")%><br />
 				</div>
 			</div>
 		</div>
 	</body>
+
+	<div class = 'row'>
+		<div class = 'col-md-2'></div>	
+		<div class = 'col-md-8'>
+			<h1><strong>Create a New Trip<strong></h1>
+			<h3 class = 'lead'>Choose a destination city from the dropdown below. Careful - once you hit the 'Create New Trip' button this trip will be saved under your account.</h3>
+			<%= render 'form' %> 
+		</div>
+			
+		<div class = 'col-md-2'></div>
+	</div>
 
 	<footer>
 		<br /><p> - URBAN NOMAD 2015 - Powered by Yelp </p>
