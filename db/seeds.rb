@@ -5,9 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+User.destroy_all
 City.destroy_all
 Attraction.destroy_all
 Trip.destroy_all
+
 
 city1 = City.create(name: 'New York', image: 'NYC.jpg', info: "   Many districts and landmarks in New York City have become well known to the city's approximately 55 million annual visitors. Several sources have ranked New York the most photographed city in the world. Times Square, iconified as The Crossroads of the World, is the brightly illuminated hub of the Broadway Theater District, one of the world's busiest pedestrian intersections, and a major center of the world's entertainment industry. The names of many of the city's bridges, skyscrapers, and parks are known around the world. Providing continuous 24/7 service, the New York City Subway is one of the most extensive metro systems worldwide, with 468 stations in operation.")
 city2 = City.create(name: 'Los Angeles', image: 'LA.jpg', info: "   Nicknamed the City of Angels, Los Angeles is a global city, with strengths in business, international trade, entertainment, culture, media, fashion, science, sports, technology, education, medicine and research. It has been ranked sixth in the Global Cities Index and 9th Global Economic Power Index. The city is home to renowned institutions covering a broad range of professional and cultural fields and is one of the most substantial economic engines within the United States. Los Angeles includes Hollywood and leads the world in the creation of television productions, video games, and recorded music; it is also one of the leaders in motion picture production. Additionally, Los Angeles hosted the Summer Olympic Games in 1932 and 1984.")
