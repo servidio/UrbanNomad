@@ -32,6 +32,7 @@ class TripsController < ApplicationController
 
 	def alltrips
 		puts params
+		@city_selection = params[:city]
 		@city = City.where(name: params[:city])
 		@user = current_user
 		@trips = Trip.where(city_id: @city)
