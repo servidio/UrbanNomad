@@ -122,7 +122,7 @@
 							</div>
 
 							<div class = 'col-md-4 text-center'>
-								<% if @trip.user == @user || @user.email == 'christopher.servidio@gmail.com' || comment.user == @user %>
+								<% if @trip.user == @user || @user.email == 'admin@admin.com' || comment.user == @user %>
 									<p><%= link_to 'Delete Comment', comment_path(id: comment, trip_id: @trip.id), method: :delete, class: "btn btn-danger btn-sm" %></p>
 								<% else %>
 									<p>N/A</p>
@@ -137,7 +137,7 @@
 							</div>
 
 							<div class = 'col-md-4 text-center'>
-								<% if @trip.user == @user || @user.email == 'christopher.servidio@gmail.com' || comment.user == @user %>
+								<% if @trip.user == @user || @user.email == 'admin@admin.com' || comment.user == @user %>
 									<p><%= link_to 'Delete Comment', comment_path(id: comment, trip_id: @trip.id), method: :delete, class: "btn btn-danger btn-sm" %></p>
 								<% else %>
 									<p>N/A</p>
